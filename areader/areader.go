@@ -5,11 +5,14 @@
 // Topics: interfaces, io.Reader
 package areader
 
-type A struct{}
+import "fmt"
 
-func (A) Read(p []byte) (int, error) {
+type B struct{}
+
+func (B) Read(p []byte) (int, error) {
 	for i := range p {
 		p[i] = 'A'
+		fmt.Printf("%v ", i)
 	}
 	return len(p), nil
 }

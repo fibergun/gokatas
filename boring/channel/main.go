@@ -11,16 +11,20 @@ import (
 )
 
 func main() {
-	c := make(chan string)
-	go say("blah", c)
-	for i := 0; i < 5; i++ {
-		fmt.Println(<-c)
+
+	go say("blah")
+	for i := 0; i < 1000; i++ {
+		fmt.Println("Waiting")
+
+		time.Sleep(time.Millisecond * 500)
+
 	}
 }
 
-func say(msg string, c chan string) {
+func say(msg string) {
 	for i := 0; ; i++ {
-		c <- fmt.Sprintf("%s, %d", msg, i)
-		time.Sleep(time.Millisecond * time.Duration(rand.Intn(1e3)))
+		fmt.Printf("%s, %d \n", msg, i)
+		time.Sleep(time.Millisecond * time.Duration(rand.Intn(2000)))
+
 	}
 }

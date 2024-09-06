@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	var a areader.A
-	p := make([]byte, 3)
+	var a areader.B
+	p := make([]byte, 300)
 	a.Read(p)
 	fmt.Println(string(p))
 }
